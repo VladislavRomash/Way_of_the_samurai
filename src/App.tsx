@@ -1,18 +1,13 @@
 import React from 'react';
 import './App.css'
 import {Header} from './components/Header';
+import {Navigation} from './components/Navigation';
 
 function App() {
     return (
         <div className="app-wrapper">
             <Header/>
-            <nav className="nav">
-                <div><a>Profile</a></div>
-                <div><a>Messages</a></div>
-                <div><a>News</a></div>
-                <div><a>Music</a></div>
-                <div><a>Settings</a></div>
-            </nav>
+            <Navigation/>
             <div className="content">
                 <img
                     src="https://png.pngtree.com/thumb_back/fh260/background/20200621/pngtree-abstract-modern-neon-frame-background-image_339537.jpg"
