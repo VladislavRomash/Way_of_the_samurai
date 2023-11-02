@@ -16,22 +16,3 @@
     grid-template-columns: 2fr 10fr;
     grid-gap: 10px;
 }
-
-.header {
-    grid-area: header;
-    background-color: dodgerblue;
-}
-
-.header img {
-    width: 50px;
-}
-
-.nav {
-    grid-area: nav;
-    background-color: pink;
-}
-
-.content {
-    grid-area: content;
-    background-color: lightgreen;
-}
