@@ -4,11 +4,12 @@ import style from './Post.module.css'
 type PropsType = {
     title: string
     img: string
+    likeCount: number
 }
 
 export const Post = (props: PropsType) => {
 
-    const {title, img} = props
+    const {title, img, likeCount} = props
 
     return (
         <div className={style.item}>
@@ -16,6 +17,7 @@ export const Post = (props: PropsType) => {
                 <img src={img} alt="avatar_post"/>
             </div>
             <div>{title}</div>
+            <div>like - {likeCount}</div>
         </div>
     );
 };
