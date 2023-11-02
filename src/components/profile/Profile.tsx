@@ -10,8 +10,8 @@ export const Profile = () => {
             <div>ava+description</div>
             <div>My posts</div>
             <div> New post</div>
-            <div>post_1</div>
-            <div>post_2</div>
+            <div className={style.item}>post_1</div>
+            <div className={style.item}>post_2</div>
         </div>
     );
 };

@@ -2,3 +2,8 @@
     grid-area: content;
     background-color: lightgreen;
 }
+
+.item {
+    border: 1px solid black;
+    padding-left: 10px;
+}

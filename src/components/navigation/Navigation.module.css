@@ -2,3 +2,11 @@
     grid-area: nav;
     background-color: pink;
 }
+
+.item {
+    color: white;
+}
+
+.active {
+    color: red;
+}
