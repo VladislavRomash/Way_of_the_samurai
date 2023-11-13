@@ -4,7 +4,7 @@ import {MyPosts} from './myPosts/myPosts';
 
 export const Profile = () => {
     return (
-        <div className={style.content}>
+        <div>
             <img
                 src="https://png.pngtree.com/thumb_back/fh260/background/20200621/pngtree-abstract-modern-neon-frame-background-image_339537.jpg"
                 alt=""/>
