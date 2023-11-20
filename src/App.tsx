@@ -20,20 +20,15 @@ function App() {
                 <Navigation/>
 
                 <div className="appWrapperContent">
-                    <Route exact
-                           path={'/dialogs'}
+                    <Route path={'/dialogs'}
                            component={Dialogs}/>
-                    <Route exact
-                           path={'/profile'}
+                    <Route path={'/profile'}
                            component={Profile}/>
-                    <Route exact
-                           path={'/news'}
+                    <Route path={'/news'}
                            component={News}/>
-                    <Route exact
-                           path={'/music'}
+                    <Route path={'/music'}
                            component={Music}/>
-                    <Route exact
-                           path={'/settings'}
+                    <Route path={'/settings'}
                            component={Settings}/>
                 </div>
             </div>

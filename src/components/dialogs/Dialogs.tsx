@@ -1,48 +1,51 @@
 import React from 'react';
 import style from './Dialogs.module.css'
-import {NavLink, Route} from 'react-router-dom';
+import {UsersList} from './usersList/UsersList';
+import {Message} from './message/Message';
+
+export type UserType = {
+    id: number
+    name: string
+    message: string
+}
 
 export const Dialogs = () => {
+
+    const users: UserType[] = [
+        {id: 1, name: 'Ann', message: 'Hello'},
+        {id: 2, name: 'Max', message: 'How are you?'},
+        {id: 3, name: 'Dima', message: 'Yo'},
+    ]
+
     return (
         <div className={style.dialogs}>
 
             <div className={style.dialogsItems}>
-
-                <div className={`${style.dialog} ${style.active}`}>
-                    <NavLink to={'/dialogs/1'}>Dima</NavLink>
-                </div>
-
-                <div className={style.dialog}>
-                    <NavLink to={'/dialogs/2'}>Ann</NavLink>
-                </div>
-
-                <div className={style.dialog}>
-                    <NavLink to={'/dialogs/3'}>Max</NavLink>
-                </div>
+                {
+                    users.map(m => {
+                        return (
+                            <UsersList key={m.id}
+                                       id={m.id}
+                                       name={m.name}/>
+                        )
+                    })
+                }
 
             </div>
 
             <div className={style.messagesItems}>
-
-                <Route path={'/dialogs/1'}>
-                    <div className={style.message}>
-                        Hi
-                    </div>
-                </Route>
-
-                <Route path={'/dialogs/2'}>
-                    <div className={style.message}>
-                        How are you?
-                    </div>
-                </Route>
-
-                <Route path={'/dialogs/3'}>
-                    <div className={style.message}>
-                        Yo
-                    </div>
-                </Route>
+                {
+                    users.map(m => {
+                        return (
+                            <Message key={m.id}
+                                     id={m.id}
+                                     title={m.message}/>
+                        )
+                    })
+                }
 
             </div>
+
         </div>
     );
 };

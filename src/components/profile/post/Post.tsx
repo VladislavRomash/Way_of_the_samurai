@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {FC} from 'react';
 import style from './Post.module.css'
 
 type PropsType = {
@@ -7,7 +7,7 @@ type PropsType = {
     likeCount: number
 }
 
-export const Post = (props: PropsType) => {
+export const Post: FC<PropsType> = (props) => {
 
     const {title, img, likeCount} = props
 

@@ -33,13 +33,16 @@ export const MyPosts = () => {
     ]
 
     return (
-        <div className={style.myPosts}>
-            <div>My Posts</div>
+        <div className={style.myPostsBlock}>
+
+            <h2>My Posts</h2>
+
             <div>
                 <input type="text"/>
                 <button>+</button>
             </div>
-            <div>
+
+            <div className={style.myPosts}>
                 {
                     post.map(m => {
                         return (
