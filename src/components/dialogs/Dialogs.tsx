@@ -17,16 +17,15 @@ export const Dialogs = () => {
         {id: 3, name: 'Dima', message: 'Yo'},
     ]
 
-    const messageElement = users.map(m => <Message key={m.id}
-                                                   id={m.id}
-                                                   title={m.message}/>
-    )
-
     const usersElement = users.map(m => <UsersList key={m.id}
                                                    id={m.id}
                                                    name={m.name}/>
     )
 
+    const messageElement = users.map(m => <Message key={m.id}
+                                                   id={m.id}
+                                                   title={m.message}/>
+    )
 
     return (
         <div className={style.dialogs}>

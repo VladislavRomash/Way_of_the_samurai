@@ -1,41 +1,21 @@
-import React from 'react';
+import React, {FC} from 'react';
 import style from './myPosts.module.css'
 import {Post} from '../post/Post';
+import {PostsType} from '../Profile';
 
-type PostType = {
-    id: number
-    img: string
-    title: string
-    like: number
+type PropsType = {
+    posts: PostsType[]
 }
 
-export const MyPosts = () => {
+export const MyPosts: FC<PropsType> = (props) => {
 
-    const post: PostType[] = [
-        {
-            id: 1,
-            img: 'https://s.pfst.net/2017.06/573451167567fc28a75b50a9ca9daa201354bffe9e1b_b.jpg',
-            title: 'Post_1',
-            like: 15
-        },
-        {
-            id: 2,
-            img: 'https://s.pfst.net/2017.03/53828446756776707179e90c1242cec20a6230e240af_b.jpg',
-            title: 'Post_2',
-            like: 35
-        },
-        {
-            id: 3,
-            img: 'https://s.pfst.net/2017.06/573307367567338c64d039da5900969936d2fa41d1d6_b.jpg',
-            title: 'Post_3',
-            like: 5
-        },
-    ]
+    const {posts} = props
 
-    const myPostElement = post.map(m => <Post key={m.id}
-                                              title={m.title}
-                                              img={m.img}
-                                              likeCount={m.like}/>
+
+    const myPostElement = posts.map(m => <Post key={m.id}
+                                               title={m.title}
+                                               img={m.img}
+                                               likeCount={m.like}/>
     )
 
     return (
