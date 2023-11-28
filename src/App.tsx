@@ -31,6 +31,7 @@ function App() {
                     <Route path={'/settings'}
                            component={Settings}/>
                 </div>
+
             </div>
 
         </BrowserRouter>

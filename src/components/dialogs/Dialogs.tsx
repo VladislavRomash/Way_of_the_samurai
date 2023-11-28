@@ -17,33 +17,27 @@ export const Dialogs = () => {
         {id: 3, name: 'Dima', message: 'Yo'},
     ]
 
+    const messageElement = users.map(m => <Message key={m.id}
+                                                   id={m.id}
+                                                   title={m.message}/>
+    )
+
+    const usersElement = users.map(m => <UsersList key={m.id}
+                                                   id={m.id}
+                                                   name={m.name}/>
+    )
+
+
     return (
         <div className={style.dialogs}>
 
             <div className={style.dialogsItems}>
-                {
-                    users.map(m => {
-                        return (
-                            <UsersList key={m.id}
-                                       id={m.id}
-                                       name={m.name}/>
-                        )
-                    })
-                }
+                {usersElement}
 
             </div>
 
             <div className={style.messagesItems}>
-                {
-                    users.map(m => {
-                        return (
-                            <Message key={m.id}
-                                     id={m.id}
-                                     title={m.message}/>
-                        )
-                    })
-                }
-
+                {messageElement}
             </div>
 
         </div>

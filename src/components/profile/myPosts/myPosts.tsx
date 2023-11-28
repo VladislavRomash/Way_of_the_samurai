@@ -32,6 +32,12 @@ export const MyPosts = () => {
         },
     ]
 
+    const myPostElement = post.map(m => <Post key={m.id}
+                                              title={m.title}
+                                              img={m.img}
+                                              likeCount={m.like}/>
+    )
+
     return (
         <div className={style.myPostsBlock}>
 
@@ -43,13 +49,7 @@ export const MyPosts = () => {
             </div>
 
             <div className={style.myPosts}>
-                {
-                    post.map(m => {
-                        return (
-                            <Post key={m.id} title={m.title} img={m.img} likeCount={m.like}/>
-                        )
-                    })
-                }
+                {myPostElement}
             </div>
         </div>
     );
