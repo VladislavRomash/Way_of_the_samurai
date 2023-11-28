@@ -1,7 +1,7 @@
 import React, {FC} from 'react';
 import style from './myPosts.module.css'
 import {Post} from '../post/Post';
-import {PostsType} from '../Profile';
+import {PostsType} from '../../../index';
 
 type PropsType = {
     posts: PostsType[]
@@ -10,13 +10,6 @@ type PropsType = {
 export const MyPosts: FC<PropsType> = (props) => {
 
     const {posts} = props
-
-
-    const myPostElement = posts.map(m => <Post key={m.id}
-                                               title={m.title}
-                                               img={m.img}
-                                               likeCount={m.like}/>
-    )
 
     return (
         <div className={style.myPostsBlock}>
@@ -29,7 +22,13 @@ export const MyPosts: FC<PropsType> = (props) => {
             </div>
 
             <div className={style.myPosts}>
-                {myPostElement}
+                {
+                    posts.map(m => <Post key={m.id}
+                                         title={m.title}
+                                         img={m.img}
+                                         likeCount={m.like}/>
+                    )
+                }
             </div>
         </div>
     );
