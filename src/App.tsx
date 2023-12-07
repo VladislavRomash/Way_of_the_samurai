@@ -12,11 +12,12 @@ import {StateType} from './state/State';
 
 type PropsType = {
     state: StateType
+    addPost: (title: string) => void
 }
 
 function App(props: PropsType) {
 
-    const {state} = props
+    const {state, addPost} = props
 
     return (
         <BrowserRouter>
@@ -31,7 +32,8 @@ function App(props: PropsType) {
                     <Route path={'/dialogs'}
                            render={() => <Dialogs state={state.dialogPage}/>}/>
                     <Route path={'/profile'}
-                           render={() => <Profile state={state.profilePage}/>}/>
+                           render={() => <Profile state={state.profilePage}
+                                                  addPost={addPost}/>}/>
                     <Route path={'/news'}
                            render={() => <News/>}/>
                     <Route path={'/music'}

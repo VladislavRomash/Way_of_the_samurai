@@ -5,11 +5,12 @@ import {PostsType} from '../../../state/State';
 
 type PropsType = {
     posts: PostsType[]
+    addPost: (title: string) => void
 }
 
 export const MyPosts: FC<PropsType> = (props) => {
 
-    const {posts} = props
+    const {posts, addPost} = props
 
     const mappedPost = posts.map(m => <Post key={m.id}
                                             title={m.title}
@@ -21,7 +22,7 @@ export const MyPosts: FC<PropsType> = (props) => {
 
     const onClickHandler = () => {
         if (inputRef.current) {
-            console.log(inputRef.current.value)
+            addPost(inputRef.current.value)
             inputRef.current.value = ''
         }
     }

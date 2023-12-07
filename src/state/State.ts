@@ -85,3 +85,9 @@ export const state: StateType = {
         ]
     }
 }
+
+export const addPost = (title: string) => {
+    const newPost = {id: state.profilePage.posts.length + 1, img: '', title, likeCount: 0}
+    state.profilePage.posts.push(newPost)
+    console.log(state.profilePage.posts)
+}
