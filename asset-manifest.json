@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/Way_of_the_samurai/static/css/main.cb8fe54c.css",
-    "main.js": "/Way_of_the_samurai/static/js/main.3d3f88a9.js",
+    "main.css": "/Way_of_the_samurai/static/css/main.7bf96c5c.css",
+    "main.js": "/Way_of_the_samurai/static/js/main.77414925.js",
     "index.html": "/Way_of_the_samurai/index.html",
-    "main.cb8fe54c.css.map": "/Way_of_the_samurai/static/css/main.cb8fe54c.css.map",
-    "main.3d3f88a9.js.map": "/Way_of_the_samurai/static/js/main.3d3f88a9.js.map"
+    "main.7bf96c5c.css.map": "/Way_of_the_samurai/static/css/main.7bf96c5c.css.map",
+    "main.77414925.js.map": "/Way_of_the_samurai/static/js/main.77414925.js.map"
   },
   "entrypoints": [
-    "static/css/main.cb8fe54c.css",
-    "static/js/main.3d3f88a9.js"
+    "static/css/main.7bf96c5c.css",
+    "static/js/main.77414925.js"
   ]
 }
