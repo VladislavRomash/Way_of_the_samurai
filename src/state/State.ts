@@ -8,6 +8,7 @@ export type DialogType = {
 }
 export type ProfileType = {
     posts: PostsType[]
+    description: DescriptionType[]
 }
 export type UserType = {
     id: number
@@ -23,6 +24,10 @@ export type PostsType = {
     img: string
     title: string
     likeCount: number
+}
+export type DescriptionType = {
+    avatar: string
+    characteristic: string
 }
 
 
@@ -52,6 +57,12 @@ export const state: StateType = {
         ],
     },
     profilePage: {
+        description: [
+            {
+                avatar: 'https://img.freepik.com/premium-vector/bearded-man-avatar-man-vector-portrait_9385-36.jpg',
+                characteristic: 'Hello, my name is Vlad. I am learning javascript and this is one of my first projects'
+            }
+        ],
         posts: [
             {
                 id: 1,

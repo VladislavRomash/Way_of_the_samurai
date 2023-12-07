@@ -1,4 +1,4 @@
-import React, {FC} from 'react';
+import React, {FC, useRef} from 'react';
 import style from './myPosts.module.css'
 import {Post} from '../post/Post';
 import {PostsType} from '../../../state/State';
@@ -11,24 +11,33 @@ export const MyPosts: FC<PropsType> = (props) => {
 
     const {posts} = props
 
+    const mappedPost = posts.map(m => <Post key={m.id}
+                                            title={m.title}
+                                            img={m.img}
+                                            likeCount={m.likeCount}/>
+    )
+
+    const inputRef = useRef<null | HTMLInputElement>(null)
+
+    const onClickHandler = () => {
+        if (inputRef.current) {
+            console.log(inputRef.current.value)
+            inputRef.current.value = ''
+        }
+    }
+
     return (
         <div className={style.myPostsBlock}>
 
             <h2>My Posts</h2>
-
             <div>
-                <input type="text"/>
-                <button>+</button>
+                <input type="text"
+                       ref={inputRef}/>
+                <button onClick={onClickHandler}>+</button>
             </div>
 
             <div className={style.myPosts}>
-                {
-                    posts.map(m => <Post key={m.id}
-                                         title={m.title}
-                                         img={m.img}
-                                         likeCount={m.likeCount}/>
-                    )
-                }
+                {mappedPost}
             </div>
         </div>
     );

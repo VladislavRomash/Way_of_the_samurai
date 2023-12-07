@@ -14,13 +14,13 @@ export const UsersList: FC<PropsType> = (props) => {
 
     return (
         <div className={style.userList}>
-            <span>
+            <div>
                 <img src={avatar} alt={'User_avatar'} className={style.avatar}/>
-            </span>
-            <span className={style.user}>
+            </div>
+            <div className={style.user}>
                <NavLink to={`/dialogs/${id}`}
                         activeClassName={style.activeLink}>{name}</NavLink>
-           </span>
+           </div>
 
         </div>
     );

@@ -3,9 +3,22 @@
 
 .descriptionBlock {
     padding: 10px;
+    border: 1px solid white;
 }
 
 .avatar {
     width: 100px;
     border-radius: 50px;
+}
+
+.info {
+    padding-left: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.description {
+    display: flex;
+    justify-content: center;
+    border: 1px solid black;
 }

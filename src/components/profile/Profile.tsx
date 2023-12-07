@@ -13,7 +13,7 @@ export const Profile: FC<PropsType> = (props) => {
 
     return (
         <div>
-            <ProfileInfo/>
+            <ProfileInfo description={state.description}/>
             <MyPosts posts={state.posts}/>
         </div>
     );

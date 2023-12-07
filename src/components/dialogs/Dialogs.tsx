@@ -12,29 +12,25 @@ export const Dialogs: FC<PropsType> = (props) => {
 
     const {state} = props
 
+    const mappedUsersList = state.users.map(m => <UsersList key={m.id}
+                                                            id={m.id}
+                                                            name={m.name}
+                                                            avatar={m.avatar}/>
+    )
+
+    const mappedMessage = state.messages.map(m => <Message key={m.id}
+                                                           id={m.id}
+                                                           title={m.title}/>
+    )
+
     return (
         <div className={style.dialogs}>
-
             <div className={style.dialogsItems}>
-                {
-                    state.users.map(m => <UsersList key={m.id}
-                                                    id={m.id}
-                                                    name={m.name}
-                                                    avatar={m.avatar}/>
-                    )
-                }
-
+                {mappedUsersList}
             </div>
-
             <div className={style.messagesItems}>
-                {
-                    state.messages.map(m => <Message key={m.id}
-                                                     id={m.id}
-                                                     title={m.title}/>
-                    )
-                }
+                {mappedMessage}
             </div>
-
         </div>
     );
 };
