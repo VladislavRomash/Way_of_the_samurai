@@ -1,7 +1,7 @@
 import React, {FC} from 'react';
 import style from './myPosts.module.css'
 import {Post} from '../post/Post';
-import {PostsType} from '../../../index';
+import {PostsType} from '../../../state/State';
 
 type PropsType = {
     posts: PostsType[]
@@ -26,7 +26,7 @@ export const MyPosts: FC<PropsType> = (props) => {
                     posts.map(m => <Post key={m.id}
                                          title={m.title}
                                          img={m.img}
-                                         likeCount={m.like}/>
+                                         likeCount={m.likeCount}/>
                     )
                 }
             </div>

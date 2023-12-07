@@ -1,11 +1,23 @@
-.user {
+.userList {
+    display: flex;
 }
 
-.user a {
+.userList a {
     color: white;
     text-decoration: none;
 }
 
-.user a.activeLink {
+.userList a.activeLink {
     color: gold;
+}
+
+.avatar {
+    width: 50px;
+    border-radius: 50px;
+}
+
+.user {
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
 }

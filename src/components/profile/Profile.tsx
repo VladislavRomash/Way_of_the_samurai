@@ -1,20 +1,20 @@
 import React, {FC} from 'react';
 import {MyPosts} from './myPosts/myPosts';
 import {ProfileInfo} from './profileInfo/ProfileInfo';
-import {PostsType} from '../../index';
+import {ProfileType} from '../../state/State';
 
 type PropsType = {
-    posts: PostsType[]
+    state: ProfileType
 }
 
 export const Profile: FC<PropsType> = (props) => {
 
-    const {posts} = props
+    const {state} = props
 
     return (
         <div>
             <ProfileInfo/>
-            <MyPosts posts={posts}/>
+            <MyPosts posts={state.posts}/>
         </div>
     );
 };

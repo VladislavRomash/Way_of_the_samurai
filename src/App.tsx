@@ -8,15 +8,15 @@ import {BrowserRouter, Route} from 'react-router-dom';
 import {Music} from './components/music/Music';
 import {News} from './components/news/News';
 import {Settings} from './components/settings/Settings';
-import {DataType} from './index';
+import {StateType} from './state/State';
 
 type PropsType = {
-    data: DataType
+    state: StateType
 }
 
 function App(props: PropsType) {
 
-    const {data} = props
+    const {state} = props
 
     return (
         <BrowserRouter>
@@ -29,9 +29,9 @@ function App(props: PropsType) {
 
                 <div className="appWrapperContent">
                     <Route path={'/dialogs'}
-                           render={() => <Dialogs users={data.users}/>}/>
+                           render={() => <Dialogs state={state.dialogPage}/>}/>
                     <Route path={'/profile'}
-                           render={() => <Profile posts={data.posts}/>}/>
+                           render={() => <Profile state={state.profilePage}/>}/>
                     <Route path={'/news'}
                            render={() => <News/>}/>
                     <Route path={'/music'}
