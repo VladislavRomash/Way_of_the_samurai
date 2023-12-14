@@ -1,7 +1,7 @@
 import React, {FC} from 'react';
 import {MyPosts} from './myPosts/myPosts';
 import {ProfileInfo} from './profileInfo/ProfileInfo';
-import {ProfileType} from '../../state/State';
+import {ProfileType} from '../../store/store';
 
 type PropsType = {
     state: ProfileType

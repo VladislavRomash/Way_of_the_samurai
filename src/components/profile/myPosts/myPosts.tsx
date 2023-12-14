@@ -1,7 +1,7 @@
-import React, {FC, useRef} from 'react';
+import React, {ChangeEvent, FC} from 'react';
 import style from './myPosts.module.css'
 import {Post} from '../post/Post';
-import {PostsType} from '../../../state/State';
+import {PostsType} from '../../../store/store';
 
 type PropsType = {
     posts: PostsType[]
@@ -20,15 +20,13 @@ export const MyPosts: FC<PropsType> = (props) => {
                                             likeCount={m.likeCount}/>
     )
 
-    const ref = useRef<null | HTMLInputElement>(null)
-
     const onClickHandler = () => {
         addPost()
         changeNewTitlePost('')
     }
 
-    const onChangeHandler = () => {
-        changeNewTitlePost(ref.current ? ref.current.value : '')
+    const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+        changeNewTitlePost(e.currentTarget.value)
     }
 
     return (
@@ -37,7 +35,6 @@ export const MyPosts: FC<PropsType> = (props) => {
             <h2>My Posts</h2>
             <div>
                 <input type="text"
-                       ref={ref}
                        value={newTitlePost}
                        onChange={onChangeHandler}/>
                 <button onClick={onClickHandler}>+</button>

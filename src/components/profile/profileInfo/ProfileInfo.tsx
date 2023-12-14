@@ -1,6 +1,6 @@
 import React, {FC} from 'react';
 import style from './ProfileInfo.module.css'
-import {DescriptionType} from '../../../state/State';
+import {DescriptionType} from '../../../store/store';
 
 type PropsType = {
     description: DescriptionType[]

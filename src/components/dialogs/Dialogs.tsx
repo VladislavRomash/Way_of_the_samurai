@@ -2,7 +2,7 @@ import React, {FC} from 'react';
 import style from './Dialogs.module.css'
 import {UsersList} from './usersList/UsersList';
 import {Message} from './message/Message';
-import {DialogType} from '../../state/State';
+import {DialogType} from '../../store/store';
 
 type PropsType = {
     state: DialogType
