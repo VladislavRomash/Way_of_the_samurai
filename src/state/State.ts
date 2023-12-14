@@ -1,5 +1,3 @@
-import {reRenderFoo} from '../render/ReRenderFoo';
-
 export type StateType = {
     dialogPage: DialogType
     profilePage: ProfileType
@@ -98,10 +96,15 @@ export const addPost = () => {
         likeCount: 0
     }
     state.profilePage.posts.push(newPost)
-    reRenderFoo(state)
+    treeListener(state)
 }
 
 export const changeNewTitlePost = (title: string) => {
     state.profilePage.newTitlePost = title
-    reRenderFoo(state)
+    treeListener(state)
 }
+
+export const subscribe = (observer: (state: StateType) => void) => {
+    treeListener = observer
+}
+let treeListener = (value: StateType) => console.log('change')
