@@ -5,12 +5,14 @@ import {PostsType} from '../../../state/State';
 
 type PropsType = {
     posts: PostsType[]
-    addPost: (title: string) => void
+    addPost: () => void
+    newTitlePost: string
+    changeNewTitlePost: (title: string) => void
 }
 
 export const MyPosts: FC<PropsType> = (props) => {
 
-    const {posts, addPost} = props
+    const {posts, addPost, newTitlePost, changeNewTitlePost} = props
 
     const mappedPost = posts.map(m => <Post key={m.id}
                                             title={m.title}
@@ -18,13 +20,15 @@ export const MyPosts: FC<PropsType> = (props) => {
                                             likeCount={m.likeCount}/>
     )
 
-    const inputRef = useRef<null | HTMLInputElement>(null)
+    const ref = useRef<null | HTMLInputElement>(null)
 
     const onClickHandler = () => {
-        if (inputRef.current) {
-            addPost(inputRef.current.value)
-            inputRef.current.value = ''
-        }
+        addPost()
+        changeNewTitlePost('')
+    }
+
+    const onChangeHandler = () => {
+        changeNewTitlePost(ref.current ? ref.current.value : '')
     }
 
     return (
@@ -33,7 +37,9 @@ export const MyPosts: FC<PropsType> = (props) => {
             <h2>My Posts</h2>
             <div>
                 <input type="text"
-                       ref={inputRef}/>
+                       ref={ref}
+                       value={newTitlePost}
+                       onChange={onChangeHandler}/>
                 <button onClick={onClickHandler}>+</button>
             </div>
 

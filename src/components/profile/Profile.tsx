@@ -5,18 +5,21 @@ import {ProfileType} from '../../state/State';
 
 type PropsType = {
     state: ProfileType
-    addPost: (title: string) => void
+    addPost: () => void
+    changeNewTitlePost: (title: string) => void
 }
 
 export const Profile: FC<PropsType> = (props) => {
 
-    const {state, addPost} = props
+    const {state, addPost, changeNewTitlePost} = props
 
     return (
         <div>
             <ProfileInfo description={state.description}/>
             <MyPosts posts={state.posts}
-                     addPost={addPost}/>
+                     addPost={addPost}
+                     newTitlePost={state.newTitlePost}
+                     changeNewTitlePost={changeNewTitlePost}/>
         </div>
     );
 };

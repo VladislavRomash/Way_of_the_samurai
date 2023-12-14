@@ -11,6 +11,7 @@ export type DialogType = {
 export type ProfileType = {
     posts: PostsType[]
     description: DescriptionType[]
+    newTitlePost: string
 }
 export type UserType = {
     id: number
@@ -84,12 +85,23 @@ export const state: StateType = {
                 title: 'Post_3',
                 likeCount: 5
             },
-        ]
+        ],
+        newTitlePost: '',
     }
 }
 
-export const addPost = (title: string) => {
-    const newPost = {id: state.profilePage.posts.length + 1, img: '', title, likeCount: 0}
+export const addPost = () => {
+    const newPost = {
+        id: state.profilePage.posts.length + 1,
+        img: '',
+        title: state.profilePage.newTitlePost,
+        likeCount: 0
+    }
     state.profilePage.posts.push(newPost)
+    reRenderFoo(state)
+}
+
+export const changeNewTitlePost = (title: string) => {
+    state.profilePage.newTitlePost = title
     reRenderFoo(state)
 }
