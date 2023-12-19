@@ -8,17 +8,16 @@ import {BrowserRouter, Route} from 'react-router-dom';
 import {Music} from './components/music/Music';
 import {News} from './components/news/News';
 import {Settings} from './components/settings/Settings';
-import {StateType} from './store/store';
+import {ActionType, StateType} from './store/store';
 
 type PropsType = {
     state: StateType
-    addPost: () => void
-    changeNewTitlePost: (title: string) => void
+    dispatch: (action: ActionType) => void
 }
 
 function App(props: PropsType) {
 
-    const {state, addPost, changeNewTitlePost} = props
+    const {state, dispatch} = props
 
     return (
         <BrowserRouter>
@@ -34,8 +33,7 @@ function App(props: PropsType) {
                            render={() => <Dialogs state={state.dialogPage}/>}/>
                     <Route path={'/profile'}
                            render={() => <Profile state={state.profilePage}
-                                                  addPost={addPost}
-                                                  changeNewTitlePost={changeNewTitlePost}/>}/>
+                                                  dispatch={dispatch}/>}/>
                     <Route path={'/news'}
                            render={() => <News/>}/>
                     <Route path={'/music'}

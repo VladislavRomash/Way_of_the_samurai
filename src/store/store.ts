@@ -1,11 +1,13 @@
+import {AddPostType, ChangeTitleType} from '../components/profile/myPosts/myPosts';
+
 export type StoreType = {
     _state: StateType
+    _treeListener: (value: StoreType) => void
     getState: () => StateType
-    addPost: () => void
-    changeNewTitlePost: (title: string) => void
-    subscribe: (observer: (value: StateType) => void) => void
-    _treeListener: (value: StateType) => void
+    subscribe: (observer: (value: StoreType) => void) => void
+    dispatch: (action: ActionType) => void
 }
+export type ActionType = AddPostType | ChangeTitleType
 export type StateType = {
     dialogPage: DialogType
     profilePage: ProfileType
@@ -92,30 +94,34 @@ export const store: StoreType = {
                     likeCount: 5
                 },
             ],
-            newTitlePost: 'hey',
+            newTitlePost: '',
         },
+    },
+    _treeListener(value: StoreType) {
+        console.log(value)
     },
     getState() {
         return this._state
     },
-    addPost() {
-        const newPost = {
-            id: this._state.profilePage.posts.length + 1,
-            img: '',
-            title: this._state.profilePage.newTitlePost,
-            likeCount: 0
-        }
-        this._state.profilePage.posts.push(newPost)
-        this._treeListener(this._state)
-    },
-    changeNewTitlePost(title: string) {
-        this._state.profilePage.newTitlePost = title
-        this._treeListener(this._state)
-    },
-    subscribe(observer: (value: StateType) => void) {
+    subscribe(observer: (value: StoreType) => void) {
         this._treeListener = observer
     },
-    _treeListener(value: StateType) {
-        console.log('change')
-    }
+    dispatch(action: ActionType) {
+        if (action.type === 'ADD-POST') {
+            const newPost: PostsType = {
+                id: this._state.profilePage.posts.length + 1,
+                img: '',
+                title: this._state.profilePage.newTitlePost,
+                likeCount: 0
+            }
+            this._state.profilePage.posts.push(newPost)
+            this._treeListener(store)
+        }
+        if (action.type === 'CHANGE-TITLE') {
+            this._treeListener(store)
+            this._state.profilePage.newTitlePost = action.title
+        }
+    },
 }
+
+console.log(store._state.profilePage.posts)

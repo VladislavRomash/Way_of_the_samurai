@@ -1,18 +1,26 @@
 import React, {ChangeEvent, FC} from 'react';
 import style from './myPosts.module.css'
 import {Post} from '../post/Post';
-import {PostsType} from '../../../store/store';
+import {ActionType, PostsType} from '../../../store/store';
 
 type PropsType = {
     posts: PostsType[]
-    addPost: () => void
     newTitlePost: string
-    changeNewTitlePost: (title: string) => void
+    dispatch: (action: ActionType) => void
+}
+
+export type AddPostType = {
+    type: 'ADD-POST'
+}
+
+export type ChangeTitleType = {
+    type: 'CHANGE-TITLE'
+    title: string
 }
 
 export const MyPosts: FC<PropsType> = (props) => {
 
-    const {posts, addPost, newTitlePost, changeNewTitlePost} = props
+    const {posts, newTitlePost, dispatch} = props
 
     const mappedPost = posts.map(m => <Post key={m.id}
                                             title={m.title}
@@ -21,12 +29,13 @@ export const MyPosts: FC<PropsType> = (props) => {
     )
 
     const onClickHandler = () => {
-        addPost()
-        changeNewTitlePost('')
+        const action: AddPostType = {type: 'ADD-POST'}
+        dispatch(action)
     }
 
     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-        changeNewTitlePost(e.currentTarget.value)
+        const action: ChangeTitleType = {type: 'CHANGE-TITLE', title: e.currentTarget.value}
+        dispatch(action)
     }
 
     return (
