@@ -1,13 +1,13 @@
 import React, {ChangeEvent, FC} from 'react';
 import {Route} from 'react-router-dom';
 import style from './Message.module.css';
-import {ActionType, addMessageAC, changeTitleMessageAC} from '../../../store/store';
+import {ActionDialogType, addMessageAC, changeTitleMessageAC} from '../../../reducers/dialogReducer';
 
 type PropsType = {
     id: number
     title: string
     initialValue: string
-    dispatch: (action: ActionType) => void
+    dispatch: (action: ActionDialogType) => void
 }
 
 export const Message: FC<PropsType> = (props) => {

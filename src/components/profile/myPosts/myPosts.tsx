@@ -1,12 +1,13 @@
 import React, {ChangeEvent, FC} from 'react';
 import style from './myPosts.module.css'
 import {Post} from '../post/Post';
-import {ActionType, addPostAC, changeTitlePostAC, PostsType} from '../../../store/store';
+import {PostsType} from '../../../store/store';
+import {ActionProfileType, addPostAC, changeTitlePostAC} from '../../../reducers/profileReducer';
 
 type PropsType = {
     posts: PostsType[]
     newTitlePost: string
-    dispatch: (action: ActionType) => void
+    dispatch: (action: ActionProfileType) => void
 }
 
 export const MyPosts: FC<PropsType> = (props) => {

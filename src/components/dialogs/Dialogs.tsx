@@ -2,11 +2,12 @@ import React, {FC} from 'react';
 import style from './Dialogs.module.css'
 import {UsersList} from './usersList/UsersList';
 import {Message} from './message/Message';
-import {ActionType, DialogType} from '../../store/store';
+import {DialogType} from '../../store/store';
+import {ActionDialogType} from '../../reducers/dialogReducer';
 
 type PropsType = {
     state: DialogType
-    dispatch: (action: ActionType) => void
+    dispatch: (action: ActionDialogType) => void
 }
 
 export const Dialogs: FC<PropsType> = (props) => {

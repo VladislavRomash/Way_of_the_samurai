@@ -2,10 +2,11 @@ import React, {FC} from 'react';
 import {MyPosts} from './myPosts/myPosts';
 import {ProfileInfo} from './profileInfo/ProfileInfo';
 import {ActionType, ProfileType} from '../../store/store';
+import {ActionProfileType} from '../../reducers/profileReducer';
 
 type PropsType = {
     state: ProfileType
-    dispatch: (action: ActionType) => void
+    dispatch: (action: ActionProfileType) => void
 }
 
 export const Profile: FC<PropsType> = (props) => {
