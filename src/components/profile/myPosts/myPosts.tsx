@@ -1,7 +1,7 @@
 import React, {ChangeEvent, FC} from 'react';
 import style from './myPosts.module.css'
 import {Post} from '../post/Post';
-import {ActionType, addPostAC, changeTitleAC, PostsType} from '../../../store/store';
+import {ActionType, addPostAC, changeTitlePostAC, PostsType} from '../../../store/store';
 
 type PropsType = {
     posts: PostsType[]
@@ -24,7 +24,7 @@ export const MyPosts: FC<PropsType> = (props) => {
     }
 
     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-        dispatch(changeTitleAC(e.currentTarget.value))
+        dispatch(changeTitlePostAC(e.currentTarget.value))
     }
 
     return (

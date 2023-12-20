@@ -30,7 +30,8 @@ function App(props: PropsType) {
 
                 <div className="appWrapperContent">
                     <Route path={'/dialogs'}
-                           render={() => <Dialogs state={state.dialogPage}/>}/>
+                           render={() => <Dialogs state={state.dialogPage}
+                                                  dispatch={dispatch}/>}/>
                     <Route path={'/profile'}
                            render={() => <Profile state={state.profilePage}
                                                   dispatch={dispatch}/>}/>

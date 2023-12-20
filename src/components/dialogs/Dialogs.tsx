@@ -2,15 +2,16 @@ import React, {FC} from 'react';
 import style from './Dialogs.module.css'
 import {UsersList} from './usersList/UsersList';
 import {Message} from './message/Message';
-import {DialogType} from '../../store/store';
+import {ActionType, DialogType} from '../../store/store';
 
 type PropsType = {
     state: DialogType
+    dispatch: (action: ActionType) => void
 }
 
 export const Dialogs: FC<PropsType> = (props) => {
 
-    const {state} = props
+    const {state, dispatch} = props
 
     const mappedUsersList = state.users.map(m => <UsersList key={m.id}
                                                             id={m.id}
@@ -20,7 +21,9 @@ export const Dialogs: FC<PropsType> = (props) => {
 
     const mappedMessage = state.messages.map(m => <Message key={m.id}
                                                            id={m.id}
-                                                           title={m.title}/>
+                                                           title={m.title}
+                                                           initialValue={state.newTitleMessage}
+                                                           dispatch={dispatch}/>
     )
 
     return (

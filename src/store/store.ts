@@ -5,7 +5,7 @@ export type StoreType = {
     subscribe: (observer: (value: StoreType) => void) => void
     dispatch: (action: ActionType) => void
 }
-export type ActionType = AddPostType | ChangeTitleType
+export type ActionType = AddPostType | ChangeTitlePostType | AddMessageType | ChangeTitleMessageType
 export type StateType = {
     dialogPage: DialogType
     profilePage: ProfileType
@@ -13,6 +13,7 @@ export type StateType = {
 export type DialogType = {
     users: UserType[]
     messages: MessagesType[]
+    newTitleMessage: string
 }
 export type ProfileType = {
     posts: PostsType[]
@@ -64,6 +65,7 @@ export const store: StoreType = {
                 {id: 2, title: 'How are you?'},
                 {id: 3, title: 'Yo'},
             ],
+            newTitleMessage: ''
         },
         profilePage: {
             description: [
@@ -120,6 +122,26 @@ export const store: StoreType = {
             this._treeListener(store)
             this._state.profilePage.newTitlePost = action.title
         }
+        if (action.type === 'ADD-MESSAGE') {
+            // const newMessage: MessagesType = {
+            //     id: this._state.dialogPage.messages.length + 1,
+            //     title: this._state.dialogPage.newTitleMessage,
+            // }
+            const objMessage = this._state.dialogPage.messages.find(f => f.id === action.id)
+            if (objMessage?.id === action.id) {
+                this._state.dialogPage.messages[action.id - 1].title = `
+                ${this._state.dialogPage.messages[action.id - 1].title} /
+                ${this._state.dialogPage.newTitleMessage}
+                `
+            }
+
+            this._state.dialogPage.newTitleMessage = ''
+            this._treeListener(store)
+        }
+        if (action.type === 'CHANGE-TITLE-MESSAGE') {
+            this._treeListener(store)
+            this._state.dialogPage.newTitleMessage = action.title
+        }
     },
 }
 
@@ -127,7 +149,18 @@ export type AddPostType = ReturnType<typeof addPostAC>
 export const addPostAC = () => ({
     type: 'ADD-POST'
 } as const)
-export type ChangeTitleType = ReturnType<typeof changeTitleAC>
-export const changeTitleAC = (title: string) => ({
+
+export type ChangeTitlePostType = ReturnType<typeof changeTitlePostAC>
+export const changeTitlePostAC = (title: string) => ({
     type: 'CHANGE-TITLE-POST', title
+} as const)
+
+export type AddMessageType = ReturnType<typeof addMessageAC>
+export const addMessageAC = (id: number) => ({
+    type: 'ADD-MESSAGE', id
+} as const)
+
+export type ChangeTitleMessageType = ReturnType<typeof changeTitleMessageAC>
+export const changeTitleMessageAC = (title: string) => ({
+    type: 'CHANGE-TITLE-MESSAGE', title
 } as const)
