@@ -1,5 +1,3 @@
-import {AddPostType, ChangeTitleType} from '../components/profile/myPosts/myPosts';
-
 export type StoreType = {
     _state: StateType
     _treeListener: (value: StoreType) => void
@@ -100,28 +98,36 @@ export const store: StoreType = {
     _treeListener(value: StoreType) {
         console.log(value)
     },
-    getState() {
-        return this._state
-    },
     subscribe(observer: (value: StoreType) => void) {
         this._treeListener = observer
+    },
+    getState() {
+        return this._state
     },
     dispatch(action: ActionType) {
         if (action.type === 'ADD-POST') {
             const newPost: PostsType = {
                 id: this._state.profilePage.posts.length + 1,
-                img: '',
+                img: 'https://media.istockphoto.com/id/1300845620/ru/векторная/пользователь-icon-flat-изолирован-на-белом-фоне-символ-пользователя-иллюстрация-вектора.jpg?s=612x612&w=0&k=20&c=Po5TTi0yw6lM7qz6yay5vUbUBy3kAEWrpQmDaUMWnek=',
                 title: this._state.profilePage.newTitlePost,
                 likeCount: 0
             }
             this._state.profilePage.posts.push(newPost)
+            this._state.profilePage.newTitlePost = ''
             this._treeListener(store)
         }
-        if (action.type === 'CHANGE-TITLE') {
+        if (action.type === 'CHANGE-TITLE-POST') {
             this._treeListener(store)
             this._state.profilePage.newTitlePost = action.title
         }
     },
 }
 
-console.log(store._state.profilePage.posts)
+export type AddPostType = ReturnType<typeof addPostAC>
+export const addPostAC = () => ({
+    type: 'ADD-POST'
+} as const)
+export type ChangeTitleType = ReturnType<typeof changeTitleAC>
+export const changeTitleAC = (title: string) => ({
+    type: 'CHANGE-TITLE-POST', title
+} as const)
