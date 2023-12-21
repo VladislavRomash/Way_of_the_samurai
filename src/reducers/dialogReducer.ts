@@ -8,8 +8,8 @@ export const dialogReducer = (state: DialogType, action: ActionDialogType): Dial
                 ...state,
                 messages: state.messages.map(m => m.id === action.id ? {
                     ...m,
-                    title: `${m.title} ${state.newTitleMessage}`
-                } : m)
+                    title: `${m.title} / ${state.newTitleMessage}`
+                } : m), newTitleMessage: ''
             }
         case 'CHANGE-TITLE-MESSAGE':
             return {...state, newTitleMessage: action.title}

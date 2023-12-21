@@ -11,7 +11,7 @@ export const profileReducer = (state: ProfileType, action: ActionProfileType): P
                 title: state.newTitlePost,
                 likeCount: 0
             }
-            return {...state, posts: [newPost, ...state.posts]}
+            return {...state, posts: [...state.posts, newPost], newTitlePost: ''}
         case 'CHANGE-TITLE-POST':
             return {...state, newTitlePost: action.title}
         default:

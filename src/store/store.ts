@@ -110,10 +110,16 @@ export const store: StoreType = {
         return this._state
     },
     dispatch(action: ActionType) {
-        console.log(action)
-        this._state.dialogPage = dialogReducer(this._state.dialogPage, action)
-        this._state.profilePage = profileReducer(this._state.profilePage, action)
-        this._treeListener(store)
+        if (action.type === 'ADD-MESSAGE' || action.type === 'CHANGE-TITLE-MESSAGE') {
+            this._state.dialogPage = dialogReducer(this._state.dialogPage, action)
+            this._treeListener(store)
+        }
+        if (action.type === 'ADD-POST' || action.type === 'CHANGE-TITLE-POST') {
+            this._state.profilePage = profileReducer(this._state.profilePage, action)
+            this._treeListener(store)
+        }
+
+
     },
 }
 
