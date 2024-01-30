@@ -1,8 +1,7 @@
 import React, {ChangeEvent, FC} from 'react';
 import style from './myPosts.module.css'
 import {Post} from '../post/Post';
-import {PostsType} from '../../../store/store';
-import {ActionProfileType, addPostAC, changeTitlePostAC} from '../../../reducers/profileReducer';
+import {ActionProfileType, addPostAC, changeTitlePostAC, PostsType} from '../../../reducers/profileReducer';
 
 type PropsType = {
     posts: PostsType[]

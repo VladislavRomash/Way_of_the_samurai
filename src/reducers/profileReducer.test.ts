@@ -1,5 +1,4 @@
-import {ProfileType} from '../store/store';
-import {addPostAC, changeTitlePostAC, profileReducer} from './profileReducer';
+import {addPostAC, changeTitlePostAC, profileReducer, ProfileType} from './profileReducer';
 
 let state: ProfileType
 

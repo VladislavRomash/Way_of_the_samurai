@@ -1,5 +1,5 @@
-import {ActionProfileType, profileReducer} from '../reducers/profileReducer';
-import {ActionDialogType, dialogReducer} from '../reducers/dialogReducer';
+import {ActionProfileType, profileReducer, ProfileType} from '../reducers/profileReducer';
+import {ActionDialogType, dialogReducer, DialogType} from '../reducers/dialogReducer';
 
 export type StoreType = {
     _state: StateType
@@ -9,38 +9,10 @@ export type StoreType = {
     dispatch: (action: ActionType) => void
 }
 export type ActionType = ActionProfileType | ActionDialogType
+
 export type StateType = {
     dialogPage: DialogType
     profilePage: ProfileType
-}
-export type DialogType = {
-    users: UserType[]
-    messages: MessagesType[]
-    newTitleMessage: string
-}
-export type ProfileType = {
-    posts: PostsType[]
-    description: DescriptionType[]
-    newTitlePost: string
-}
-export type UserType = {
-    id: number
-    name: string
-    avatar: string
-}
-export type MessagesType = {
-    id: number
-    title: string
-}
-export type PostsType = {
-    id: number
-    img: string
-    title: string
-    likeCount: number
-}
-export type DescriptionType = {
-    avatar: string
-    characteristic: string
 }
 
 export const store: StoreType = {

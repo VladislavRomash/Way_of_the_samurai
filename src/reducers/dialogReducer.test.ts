@@ -1,5 +1,4 @@
-import {DialogType} from '../store/store';
-import {addMessageAC, changeTitleMessageAC, dialogReducer} from './dialogReducer';
+import {addMessageAC, changeTitleMessageAC, dialogReducer, DialogType} from './dialogReducer';
 
 let state: DialogType
 
