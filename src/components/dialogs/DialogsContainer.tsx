@@ -1,31 +1,25 @@
-import React from 'react';
 import {addMessageAC, changeTitleMessageAC} from '../../reducers/dialogReducer';
 import {Dialogs} from './Dialogs';
-import {MyContext} from '../../context/MyProvider';
+import {connect} from 'react-redux';
+import {RootType} from '../../store/storeRedux';
 
-export const DialogsContainer = () => {
+const mapStateToProps = (state: RootType) => {
+    return {
+        users: state.dialogPage.users,
+        messages: state.dialogPage.messages,
+        currentValue: state.dialogPage.newTitleMessage
+    }
+}
 
-    return <MyContext.Consumer>
-        {
-            (store) => {
-
-                const state = store.getState()
-
-                const addMessage = (id: number) => {
-                    store.dispatch(addMessageAC(id))
-                }
-
-                const changeCurrentTitle = (title: string) => {
-                    store.dispatch(changeTitleMessageAC(title))
-                }
-
-                return <Dialogs users={state.dialogPage.users}
-                                messages={state.dialogPage.messages}
-                                currentValue={state.dialogPage.newTitleMessage}
-                                addMessage={addMessage}
-                                changeCurrentTitle={changeCurrentTitle}
-                />
-            }
+const mapDispatchToProps = (dispatch: Function) => {
+    return {
+        addMessage: (id: number) => {
+            dispatch(addMessageAC(id))
+        },
+        changeCurrentTitle: (title: string) => {
+            dispatch(changeTitleMessageAC(title))
         }
-    </MyContext.Consumer>
-};
+    }
+}
+
+export const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs)

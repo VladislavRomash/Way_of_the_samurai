@@ -1,19 +1,19 @@
 import ReactDOM from 'react-dom';
 import App from './App';
 import React from 'react';
-import {store, RootType} from './store/storeRedux';
-import {MyProvider} from './context/MyProvider';
+import {store} from './store/storeRedux';
+import {Provider} from 'react-redux';
 
 
-const reRenderTree = (state: RootType) => {
+const reRenderTree = () => {
     ReactDOM.render(
-        <MyProvider store={store}>
-            <App state={state}/>
-        </MyProvider>,
+        <Provider store={store}>
+            <App/>
+        </Provider>,
         document.getElementById('root')
     );
 };
 
-reRenderTree(store.getState())
-store.subscribe(() => reRenderTree(store.getState()))
+reRenderTree()
+store.subscribe(() => reRenderTree())
 

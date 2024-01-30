@@ -1,19 +1,14 @@
 import React, {FC} from 'react';
-import {ProfileInfo} from './profileInfo/ProfileInfo';
-import {ProfileType} from '../../reducers/profileReducer';
 import {MyPostsContainer} from './myPosts/MyPostsContainer'
+import {ProfileInfoContainer} from './profileInfo/ProfileInfoContainer';
 
-type PropsType = {
-    state: ProfileType
-}
+type PropsType = {}
 
-export const Profile: FC<PropsType> = (props) => {
-
-    const {state} = props
+export const Profile: FC<PropsType> = () => {
 
     return (
         <div>
-            <ProfileInfo description={state.description}/>
+            <ProfileInfoContainer/>
             <MyPostsContainer/>
         </div>
     );
