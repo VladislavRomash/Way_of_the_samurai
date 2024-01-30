@@ -7,18 +7,16 @@ import {BrowserRouter, Route} from 'react-router-dom';
 import {Music} from './components/music/Music';
 import {News} from './components/news/News';
 import {Settings} from './components/settings/Settings';
-import {ActionType} from './store/store';
 import {RootType} from './store/storeRedux';
 import {DialogsContainer} from './components/dialogs/DialogsContainer';
 
 type PropsType = {
     state: RootType
-    dispatch: (action: ActionType) => void
 }
 
 function App(props: PropsType) {
 
-    const {state, dispatch} = props
+    const {state} = props
 
     return (
         <BrowserRouter>
@@ -31,11 +29,9 @@ function App(props: PropsType) {
 
                 <div className="appWrapperContent">
                     <Route path={'/dialogs'}
-                           render={() => <DialogsContainer state={state.dialogPage}
-                                                  dispatch={dispatch}/>}/>
+                           render={() => <DialogsContainer/>}/>
                     <Route path={'/profile'}
-                           render={() => <Profile state={state.profilePage}
-                                                  dispatch={dispatch}/>}/>
+                           render={() => <Profile state={state.profilePage}/>}/>
                     <Route path={'/news'}
                            render={() => <News/>}/>
                     <Route path={'/music'}

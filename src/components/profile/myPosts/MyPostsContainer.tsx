@@ -1,27 +1,30 @@
-import React, {FC} from 'react';
-import {ActionProfileType, addPostAC, changeTitlePostAC, PostsType} from '../../../reducers/profileReducer';
+import React from 'react';
+import {addPostAC, changeTitlePostAC} from '../../../reducers/profileReducer';
 import {MyPosts} from './MyPosts';
+import {MyContext} from '../../../context/MyProvider';
 
-type PropsType = {
-    posts: PostsType[]
-    title: string
-    dispatch: (action: ActionProfileType) => void
-}
 
-export const MyPostsContainer: FC<PropsType> = (props) => {
+export const MyPostsContainer = () => {
 
-    const {posts, title, dispatch} = props
+    return <MyContext.Consumer>
+        {
+            (store) => {
 
-    const addPost = () => {
-        dispatch(addPostAC())
-    }
+                let state = store.getState()
+                const addPost = () => {
+                    store.dispatch(addPostAC())
+                }
 
-    const changeCurrentTitle = (title: string) => {
-        dispatch(changeTitlePostAC(title))
-    }
+                const changeCurrentTitle = (title: string) => {
+                    store.dispatch(changeTitlePostAC(title))
+                }
+                return <MyPosts posts={state.profilePage.posts}
+                                title={state.profilePage.newTitlePost}
+                                addPost={addPost}
+                                changeCurrentTitle={changeCurrentTitle}/>
+            }
+        }
+    </MyContext.Consumer>
 
-    return <MyPosts posts={posts}
-                    title={title}
-                    addPost={addPost}
-                    changeCurrentTitle={changeCurrentTitle}/>
+
 };

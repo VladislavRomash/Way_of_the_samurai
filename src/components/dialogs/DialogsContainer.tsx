@@ -1,28 +1,31 @@
-import React, {FC} from 'react';
-import {ActionDialogType, addMessageAC, changeTitleMessageAC, DialogType} from '../../reducers/dialogReducer';
+import React from 'react';
+import {addMessageAC, changeTitleMessageAC} from '../../reducers/dialogReducer';
 import {Dialogs} from './Dialogs';
+import {MyContext} from '../../context/MyProvider';
 
-type PropsType = {
-    state: DialogType
-    dispatch: (action: ActionDialogType) => void
-}
+export const DialogsContainer = () => {
 
-export const DialogsContainer: FC<PropsType> = (props) => {
+    return <MyContext.Consumer>
+        {
+            (store) => {
 
-    const {state, dispatch} = props
+                const state = store.getState()
 
-    const addMessage = (id: number) => {
-        dispatch(addMessageAC(id))
-    }
+                const addMessage = (id: number) => {
+                    store.dispatch(addMessageAC(id))
+                }
 
-    const changeCurrentTitle = (title: string) => {
-        dispatch(changeTitleMessageAC(title))
-    }
+                const changeCurrentTitle = (title: string) => {
+                    store.dispatch(changeTitleMessageAC(title))
+                }
 
-    return <Dialogs users={state.users}
-                    messages={state.messages}
-                    currentValue={state.newTitleMessage}
-                    addMessage={addMessage}
-                    changeCurrentTitle={changeCurrentTitle}
-    />
+                return <Dialogs users={state.dialogPage.users}
+                                messages={state.dialogPage.messages}
+                                currentValue={state.dialogPage.newTitleMessage}
+                                addMessage={addMessage}
+                                changeCurrentTitle={changeCurrentTitle}
+                />
+            }
+        }
+    </MyContext.Consumer>
 };
