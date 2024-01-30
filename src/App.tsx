@@ -2,7 +2,6 @@ import React from 'react';
 import './App.css'
 import {Header} from './components/header/Header';
 import {Navigation} from './components/navigation/Navigation';
-import {Dialogs} from './components/dialogs/Dialogs';
 import {Profile} from './components/profile/Profile';
 import {BrowserRouter, Route} from 'react-router-dom';
 import {Music} from './components/music/Music';
@@ -10,6 +9,7 @@ import {News} from './components/news/News';
 import {Settings} from './components/settings/Settings';
 import {ActionType} from './store/store';
 import {RootType} from './store/storeRedux';
+import {DialogsContainer} from './components/dialogs/DialogsContainer';
 
 type PropsType = {
     state: RootType
@@ -31,7 +31,7 @@ function App(props: PropsType) {
 
                 <div className="appWrapperContent">
                     <Route path={'/dialogs'}
-                           render={() => <Dialogs state={state.dialogPage}
+                           render={() => <DialogsContainer state={state.dialogPage}
                                                   dispatch={dispatch}/>}/>
                     <Route path={'/profile'}
                            render={() => <Profile state={state.profilePage}

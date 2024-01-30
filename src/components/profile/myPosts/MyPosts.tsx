@@ -1,17 +1,18 @@
 import React, {ChangeEvent, FC} from 'react';
 import style from './myPosts.module.css'
 import {Post} from '../post/Post';
-import {ActionProfileType, addPostAC, changeTitlePostAC, PostsType} from '../../../reducers/profileReducer';
+import {PostsType} from '../../../reducers/profileReducer';
 
 type PropsType = {
     posts: PostsType[]
-    newTitlePost: string
-    dispatch: (action: ActionProfileType) => void
+    title: string
+    addPost: () => void
+    changeCurrentTitle: (title: string) => void
 }
 
 export const MyPosts: FC<PropsType> = (props) => {
 
-    const {posts, newTitlePost, dispatch} = props
+    const {posts, title, addPost, changeCurrentTitle} = props
 
     const mappedPost = posts.map(m => <Post key={m.id}
                                             title={m.title}
@@ -20,11 +21,11 @@ export const MyPosts: FC<PropsType> = (props) => {
     )
 
     const onClickHandler = () => {
-        dispatch(addPostAC())
+        addPost()
     }
 
     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-        dispatch(changeTitlePostAC(e.currentTarget.value))
+        changeCurrentTitle(e.currentTarget.value)
     }
 
     return (
@@ -33,7 +34,7 @@ export const MyPosts: FC<PropsType> = (props) => {
             <h2>My Posts</h2>
             <div>
                 <input type="text"
-                       value={newTitlePost}
+                       value={title}
                        onChange={onChangeHandler}/>
                 <button onClick={onClickHandler}>+</button>
             </div>

@@ -1,25 +1,25 @@
 import React, {ChangeEvent, FC} from 'react';
 import {Route} from 'react-router-dom';
 import style from './Message.module.css';
-import {ActionDialogType, addMessageAC, changeTitleMessageAC} from '../../../reducers/dialogReducer';
 
 type PropsType = {
     id: number
     title: string
-    initialValue: string
-    dispatch: (action: ActionDialogType) => void
+    currentValue: string
+    addMessage: (id: number) => void
+    changeCurrentTitle: (title: string) => void
 }
 
 export const Message: FC<PropsType> = (props) => {
 
-    const {id, title, initialValue, dispatch} = props
+    const {id, title, currentValue, addMessage, changeCurrentTitle} = props
 
     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-        dispatch(changeTitleMessageAC(e.currentTarget.value))
+        changeCurrentTitle(e.currentTarget.value)
     }
 
     const onClickHandler = () => {
-        dispatch(addMessageAC(id))
+        addMessage(id)
     }
 
     return (
@@ -28,7 +28,7 @@ export const Message: FC<PropsType> = (props) => {
                 {title}
             </div>
             <div>
-                <input value={initialValue} onChange={onChangeHandler}/>
+                <input value={currentValue} onChange={onChangeHandler}/>
                 <button onClick={onClickHandler}>+</button>
             </div>
         </Route>
