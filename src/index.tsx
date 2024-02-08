@@ -5,15 +5,9 @@ import {store} from './store/storeRedux';
 import {Provider} from 'react-redux';
 
 
-const reRenderTree = () => {
-    ReactDOM.render(
-        <Provider store={store}>
-            <App/>
-        </Provider>,
-        document.getElementById('root')
-    );
-};
-
-reRenderTree()
-store.subscribe(() => reRenderTree())
-
+ReactDOM.render(
+    <Provider store={store}>
+        <App/>
+    </Provider>,
+    document.getElementById('root')
+);
