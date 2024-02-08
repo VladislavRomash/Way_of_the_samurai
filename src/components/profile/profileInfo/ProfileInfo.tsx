@@ -10,18 +10,21 @@ export const ProfileInfo: FC<PropsType> = (props) => {
 
     const {description} = props
 
-    const mappedDescription = description.map((m, i) =>
-        <div key={i}
-             className={style.description}>
-            <div>
-                <img src={m.avatar}
-                     alt="My_avatar"
-                     className={style.avatar}/>
-            </div>
-            <div className={style.info}>
-                {m.characteristic}
-            </div>
-        </div>
+    const mappedDescription = description.map((m, i) => {
+            return (
+                <div key={i}
+                     className={style.description}>
+                    <div>
+                        <img src={m.avatar}
+                             alt="My_avatar"
+                             className={style.avatar}/>
+                    </div>
+                    <div className={style.info}>
+                        {m.characteristic}
+                    </div>
+                </div>
+            )
+        }
     )
 
     return (

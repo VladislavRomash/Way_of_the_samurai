@@ -7,7 +7,7 @@ import {Music} from './components/music/Music';
 import {News} from './components/news/News';
 import {Settings} from './components/settings/Settings';
 import {DialogsContainer} from './components/dialogs/DialogsContainer';
-import {Profile} from './components/profile/Profile';
+import {ProfileContainer} from './components/profile/ProfileContainer';
 
 function App() {
 
@@ -24,7 +24,7 @@ function App() {
                     <Route path={'/dialogs'}
                            render={() => <DialogsContainer/>}/>
                     <Route path={'/profile'}
-                           render={() => <Profile/>}/>
+                           render={() => <ProfileContainer/>}/>
                     <Route path={'/news'}
                            render={() => <News/>}/>
                     <Route path={'/music'}

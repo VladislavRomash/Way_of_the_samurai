@@ -1,14 +1,14 @@
-import {MyPosts} from './MyPosts';
 import {connect} from 'react-redux';
-import {addPostAC, changeTitlePostAC} from '../../../reducers/profileReducer';
-import {RootType} from '../../../store/storeRedux';
+import {Profile} from './Profile';
+import {RootType} from '../../store/storeRedux';
+import {addPostAC, changeTitlePostAC} from '../../reducers/profileReducer';
 
 const mapStateToProps = (state: RootType) => {
     return {
-        posts: state.profilePage.posts,
-        title: state.profilePage.newTitlePost
+        profilePage: state.profilePage
     }
 }
+
 const mapDispatchToProps = (dispatch: Function) => {
     return {
         addPost: () => {
@@ -19,4 +19,5 @@ const mapDispatchToProps = (dispatch: Function) => {
         }
     }
 }
-export const MyPostsContainer = connect(mapStateToProps, mapDispatchToProps)(MyPosts)
+
+export const ProfileContainer = connect(mapStateToProps, mapDispatchToProps)(Profile)
