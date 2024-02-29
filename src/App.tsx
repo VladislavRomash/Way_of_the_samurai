@@ -8,6 +8,7 @@ import {News} from './components/news/News';
 import {Settings} from './components/settings/Settings';
 import {DialogsContainer} from './components/dialogs/DialogsContainer';
 import {ProfileContainer} from './components/profile/ProfileContainer';
+import {FindUsersContainer} from './components/findusers/FindUsersContainer';
 
 function App() {
 
@@ -31,6 +32,8 @@ function App() {
                            render={() => <Music/>}/>
                     <Route path={'/settings'}
                            render={() => <Settings/>}/>
+                    <Route path={'/findusers'}
+                           render={() => <FindUsersContainer/>}/>
                 </div>
 
             </div>

@@ -31,6 +31,11 @@ export const Navigation = () => {
                          activeClassName={style.activeLink}>Settings</NavLink>
             </div>
 
+            <div className={style.item}>
+                <NavLink to={'/findusers'}
+                         activeClassName={style.activeLink}>Find Users</NavLink>
+            </div>
+
         </nav>
     );
 };

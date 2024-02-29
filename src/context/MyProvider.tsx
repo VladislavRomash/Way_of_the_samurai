@@ -14,11 +14,11 @@ type PropsType = {
     children: ReactNode
 }
 
-export const MyProvider: FC<PropsType> = (props) => {
-
-    const {store, children} = props
-
-    return <MyContext.Provider value={store}>
-        {children}
-    </MyContext.Provider>
-}
+// export const MyProvider: FC<PropsType> = (props) => {
+//
+//     const {store, children} = props
+//
+//     return <MyContext.Provider value={store}>
+//         {children}
+//     </MyContext.Provider>
+// }
