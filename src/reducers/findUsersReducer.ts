@@ -1,17 +1,7 @@
-export interface AllUserFind {
-    id: number,
-    avatar: string
-    followed: boolean
-    name: string
-    location: {
-        country: string
-        city: string
-    }
-    about: string
-}
+import {UsersApi} from '../api/apiType';
 
 export interface FindUsersPage {
-    users: AllUserFind[]
+    users: UsersApi[]
 }
 
 const initialState = {
@@ -37,6 +27,6 @@ export const changeSubscribeStatus = (id: number) => {
 }
 
 type GetUsers = ReturnType<typeof getUsers>
-export const getUsers = (users: AllUserFind[]) => {
+export const getUsers = (users: UsersApi[]) => {
     return {type: 'GET_USERS', users} as const
 }

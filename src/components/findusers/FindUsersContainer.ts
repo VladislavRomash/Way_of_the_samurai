@@ -1,7 +1,8 @@
 import {connect} from 'react-redux';
 import {FindUsers} from './FindUsers';
 import {RootType} from '../../store/storeRedux';
-import {AllUserFind, changeSubscribeStatus, getUsers} from '../../reducers/findUsersReducer';
+import {changeSubscribeStatus, getUsers} from '../../reducers/findUsersReducer';
+import {UsersApi} from '../../api/apiType';
 
 const mapStateToProps = (state: RootType) => {
     return {
@@ -14,7 +15,7 @@ const mapDispatchToProps = (dispatch: Function) => {
         changingStatusSub: (id: number) => {
             dispatch(changeSubscribeStatus(id))
         },
-        gerDataUsers: (users: AllUserFind[]) => {
+        gerDataUsers: (users: UsersApi[]) => {
             dispatch(getUsers(users))
         }
     }

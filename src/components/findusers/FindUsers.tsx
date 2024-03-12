@@ -1,36 +1,21 @@
 import React, {useEffect} from 'react';
-import {AllUserFind} from '../../reducers/findUsersReducer';
 import style from './FindUsers.module.css'
+import {users_api} from '../../api/users_api';
+import {UsersApi} from '../../api/apiType';
+import defaultUsersPhoto from './img/User.png'
 
 interface Props {
-    users: AllUserFind[]
+    users: UsersApi[]
     changingStatusSub: (id: number) => void
-    gerDataUsers: (users: AllUserFind[]) => void
+    gerDataUsers: (users: UsersApi[]) => void
 }
-
-const usersData = [
-    {
-        id: 1,
-        avatar: 'https://www.shutterstock.com/image-vector/blank-avatar-photo-icon-design-600nw-1682415103.jpg',
-        followed: true,
-        name: 'Igor V.',
-        location: {country: 'Belarus', city: 'Minsk'},
-        about: 'I am looking for a Job right now...'
-    },
-    {
-        id: 2,
-        avatar: 'https://www.shutterstock.com/image-vector/blank-avatar-photo-icon-design-600nw-1682415103.jpg',
-        followed: false,
-        name: 'Sveta B.',
-        location: {country: 'Ukraine', city: 'Kiev'},
-        about: 'I am pretty!'
-    }
-]
 
 export const FindUsers = ({users, changingStatusSub, gerDataUsers}: Props) => {
 
     useEffect(() => {
-        gerDataUsers(usersData)
+        users_api.getUsers()
+            .then(response => gerDataUsers(response.items))
+            .catch(error => console.warn(error))
     }, []);
 
     return (
@@ -42,7 +27,7 @@ export const FindUsers = ({users, changingStatusSub, gerDataUsers}: Props) => {
                              className={style.user}>
 
                             <div className={style.imgAndButton}>
-                                <img src={m.avatar}
+                                <img src={m.photos.small ? '' : defaultUsersPhoto}
                                      alt="avatar"
                                      className={style.img}/>
                                 <button
@@ -55,12 +40,12 @@ export const FindUsers = ({users, changingStatusSub, gerDataUsers}: Props) => {
 
                                 <div className={style.descriptionInfo}>
                                     <div>{m.name}</div>
-                                    <div>{m.about}</div>
+                                    <div>{'m.about'}</div>
                                 </div>
 
                                 <div className={style.descriptionLocation}>
-                                    <div>{m.location.country}</div>
-                                    <div>{m.location.city}</div>
+                                    <div>{'m.location.country'}</div>
+                                    <div>{'m.location.city'}</div>
                                 </div>
 
                             </div>
