@@ -8,21 +8,44 @@ interface Props {
     users: UsersApi[]
     changingStatusSub: (id: number) => void
     gerDataUsers: (users: UsersApi[]) => void
+    currentPage: number
+    changeCurrentPage: (currentPage: number) => void
+    totalUsers: number
+    changeTotalUsers: (totalUsers: number) => void
+    portion: number
 }
 
 class FindUsers extends Component<Props> {
     componentDidMount() {
-        users_api.getUsers()
-            .then(response => this.props.gerDataUsers(response.items))
-            .catch(error => console.warn(error))
+        users_api.getUsers(this.props.currentPage, this.props.portion)
+            .then(response => {
+                this.props.gerDataUsers(response.items)
+                this.props.changeTotalUsers(response.totalCount)
+            })
+    }
+
+    onClickHandler = (currentPage: number) => {
+        this.props.changeCurrentPage(currentPage)
+        users_api.getUsers(currentPage, this.props.portion)
+            .then(response => {
+                this.props.gerDataUsers(response.items)
+                this.props.changeTotalUsers(response.totalCount)
+            })
     }
 
     render() {
 
-        const {users, changingStatusSub} = this.props
+        const {users, changingStatusSub, currentPage, portion, totalUsers} = this.props
+
+        const pagesCount = []
+
+        for (let i = 1; i <= Math.ceil(totalUsers / portion); i++) {
+            pagesCount.push(i)
+        }
 
         return (
             <div className={style.findUsers}>
+
                 {
                     users.map(m => {
                         return (
@@ -30,7 +53,7 @@ class FindUsers extends Component<Props> {
                                  className={style.user}>
 
                                 <div className={style.imgAndButton}>
-                                    <img src={m.photos.small ? '' : defaultUsersPhoto}
+                                    <img src={m.photos.small ? m.photos.small : defaultUsersPhoto}
                                          alt="avatar"
                                          className={style.img}/>
                                     <button
@@ -56,6 +79,15 @@ class FindUsers extends Component<Props> {
                         )
                     })
                 }
+
+                <div>
+                    {
+                        pagesCount.map(m => <span key={m}
+                                                  className={m === currentPage ? style.currentPage : ''}
+                                                  onClick={() => this.onClickHandler(m)}>{m} </span>)
+                    }
+                </div>
+
             </div>
         );
     }
