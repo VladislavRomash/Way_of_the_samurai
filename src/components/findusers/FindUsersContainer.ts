@@ -1,8 +1,9 @@
 import {connect} from 'react-redux';
-import {FindUsers} from './FindUsers';
 import {RootType} from '../../store/storeRedux';
 import {changeSubscribeStatus, getUsers} from '../../reducers/findUsersReducer';
 import {UsersApi} from '../../api/apiType';
+import FindUsers from './FindUsers';
+
 
 const mapStateToProps = (state: RootType) => {
     return {
