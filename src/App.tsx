@@ -8,7 +8,7 @@ import {News} from './components/news/News';
 import {Settings} from './components/settings/Settings';
 import {DialogsContainer} from './components/dialogs/DialogsContainer';
 import {ProfileContainer} from './components/profile/ProfileContainer';
-import {FindUsersContainer} from './components/findusers/FindUsersContainer';
+import FindUsersContainer from './components/findusers/FindUsersContainer';
 
 function App() {
 

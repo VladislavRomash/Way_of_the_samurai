@@ -9,9 +9,9 @@ export interface FindUsersPage {
 
 const initialState = {
     users: [],
-    portion: 5,
+    portion: 3,
     totalUsers: 0,
-    currentPage: 45
+    currentPage: 1
 }
 
 type Action = ChangeSubscribeStatus
